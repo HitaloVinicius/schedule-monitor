@@ -8,9 +8,11 @@ server.use(logger('dev'));
 
 const userRouter = require('./routes/user');
 const eventRouter = require('./routes/event');
+const authRouter = require('./routes/auth');
 
 server.use('/users', userRouter);
 server.use('/events', eventRouter);
+server.use('/auth', authRouter);
 
 const { PORT } = process.env;
 
