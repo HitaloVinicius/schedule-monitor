@@ -7,8 +7,10 @@ server.use(express.json());
 server.use(logger('dev'));
 
 const userRouter = require('./routes/user');
+const eventRouter = require('./routes/event');
 
 server.use('/users', userRouter);
+server.use('/events', eventRouter);
 
 const { PORT } = process.env;
 
