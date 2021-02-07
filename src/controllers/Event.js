@@ -8,7 +8,7 @@ module.exports = {
 
       const { title, description, scheduled_to } = req.body;
 
-      const userId = '602029ad2cc7a67c4469b568'; //! substituir pelo id do token
+      const userId = req.userId;
 
       if (!Types.ObjectId.isValid(userId)) {
         throw { type: 'ValidationError', status: 404, message: 'Invalid Id' };
@@ -41,7 +41,7 @@ module.exports = {
     try {
 
       const { id } = req.params;
-      const userId = '602029ad2cc7a67c4469b568'; //! substituir pelo id do token
+      const userId = req.userId;
 
       await EventModel.deleteOne({
         _id: id,

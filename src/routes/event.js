@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { create, destroy } = require('../controllers/Event');
 
-router.post('/', create);
-router.delete('/:id', destroy);
+const { verifyJWT } = require('../middleware/auth');
+
+router.post('/', verifyJWT, create);
+router.delete('/:id', verifyJWT, destroy);
 
 module.exports = router;

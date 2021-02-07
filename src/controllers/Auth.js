@@ -1,13 +1,13 @@
 const UserModel = require('../models/Users');
 const jwt = require('jsonwebtoken');
-const { SECRET_KEY } = process.env
+const { SECRET_KEY } = process.env;
 
 module.exports = {
     async auth(req, res) {
         const { username, password } = req.body;
 
         try {
-            const user = await UserModel.findOne({ username, password })
+            const user = await UserModel.findOne({ username, password });
             console.log(user);
 
             if (!user) {
@@ -15,10 +15,10 @@ module.exports = {
             }
             const token = jwt.sign({ userId: user._id }, SECRET_KEY);
 
-            return res.status(200).json({ token })
+            return res.status(200).json({ token });
         } catch (error) {
             console.log(error);
             return res.status(500).json({ message: 'error' });
         }
     }
-}
+};
