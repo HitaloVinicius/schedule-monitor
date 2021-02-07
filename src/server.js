@@ -7,8 +7,10 @@ server.use(express.json());
 server.use(logger('dev'));
 
 const userRouter = require('./routes/user');
+const authRouter = require('./routes/auth');
 
 server.use('/users', userRouter);
+server.use('/auth', authRouter);
 
 const { PORT } = process.env;
 
