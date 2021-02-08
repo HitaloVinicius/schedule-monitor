@@ -3,3 +3,4 @@ node_modules
 .eslintrc.*
 .env
 package-lock.json
+ideias.txt
