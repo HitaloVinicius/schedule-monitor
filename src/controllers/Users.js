@@ -1,3 +1,4 @@
+const User = require('../models/Users');
 const UserModel = require('../models/Users');
 
 module.exports = {
@@ -53,6 +54,24 @@ module.exports = {
       return res.status(200).json({ message: 'success' });
 
     } catch (error) {
+      return res.status(500).json({ type: error.name, message: error.message });
+    }
+  },
+  async destroy(req, res) {
+    try {
+
+      const { id } = req.params;
+      const user = await UserModel.findById(id)
+   
+      if (!user) {
+        throw { type: 'ValidationError', status: 404, message: 'User not found' };
+      } 
+
+      await UserModel.deleteOne({ _id: id }).populate('events');
+
+      return res.status(200).json(user);
+    } catch (error) {
+      
       return res.status(500).json({ type: error.name, message: error.message });
     }
   }

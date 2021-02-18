@@ -8,7 +8,6 @@ module.exports = {
 
         try {
             const user = await UserModel.findOne({ username, password });
-            console.log(user);
 
             if (!user) {
                 return res.status(401).json({ erro: 'ACCESS DENIED' });
@@ -17,6 +16,7 @@ module.exports = {
 
             return res.status(200).json({ token });
         } catch (error) {
+            
             console.log(error);
             return res.status(500).json({ message: 'error' });
         }

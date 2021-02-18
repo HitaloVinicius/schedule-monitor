@@ -14,7 +14,7 @@ server.use('/users', userRouter);
 server.use('/events', eventRouter);
 server.use('/auth', authRouter);
 
-const { PORT } = process.env;
+const { PORT = 3333 } = process.env;
 
 server.listen(PORT, () => {
   console.log(`Running on port ${PORT}.`);
